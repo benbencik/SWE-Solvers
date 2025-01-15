@@ -1,18 +1,18 @@
-add_library(${META_PROJECT_NAME} INTERFACE)
+add_library(SWE-Solvers INTERFACE)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "*")
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${SOURCES})
-target_sources(${META_PROJECT_NAME} INTERFACE ${SOURCES})
-target_include_directories(${META_PROJECT_NAME} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+target_sources(SWE-Solvers INTERFACE ${SOURCES})
+target_include_directories(SWE-Solvers INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_include_directories(${META_PROJECT_NAME} 
+target_include_directories(SWE-Solvers 
     INTERFACE
         "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
         "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 
 option(ENABLE_AUGMENTED_RIEMANN_EIGEN_COEFFICIENTS "Enable augmented Riemann eigen coefficients" OFF)
 if(ENABLE_AUGMENTED_RIEMANN_EIGEN_COEFFICIENTS)
-    target_compile_definitions(${META_PROJECT_NAME} INTERFACE ENABLE_AUGMENTED_RIEMANN_EIGEN_COEFFICIENTS)
+    target_compile_definitions(SWE-Solvers INTERFACE ENABLE_AUGMENTED_RIEMANN_EIGEN_COEFFICIENTS)
 endif()
 
-add_custom_target(${META_PROJECT_NAME}- SOURCES ${SOURCES})
+add_custom_target(SWE-Solvers-SOURCES SOURCES ${SOURCES})
